@@ -20,6 +20,8 @@ POST: `/api/add/producto`
 
 **request**
 
+Esta ruta requiere obligatoriamente los campos: nombre, cantidad y precio.
+
 ```json
 {
   "nombre": "pan",
@@ -32,19 +34,20 @@ POST: `/api/add/producto`
 
 PATCH: `/api/update/producto`
 
-Esta ruta requiere si o si ID
-Esta ruta actualiza dependiendo de lo que le envien execto si solo se le envia id
+Esta ruta requiere obligatoriamente un ID.
 
-Es decir si solo envias id y nombre eso se actualiza y lo otro se queda quieto
+Actualiza los campos según la información que se envíe, excepto cuando solo se envía el ID.
+
+Es decir, si envías únicamente el ID y el nombre, esos campos se actualizan y los demás permanecen sin cambios.
 
 **request**
 
 ```json
 {
-    "id": 5,
-    "nombre": "pan",
-    "cantidad": 7,
-    "precio": 1200
+  "id": 5,
+  "nombre": "pan",
+  "cantidad": 7,
+  "precio": 1200
 }
 ```
 
@@ -52,13 +55,12 @@ Es decir si solo envias id y nombre eso se actualiza y lo otro se queda quieto
 
 DELETE: `/api/delete/producto`
 
-Esta ruta requiere si o si ID
+Esta ruta requiere obligatoriamente un ID.
 
 **request**
 
 ```json
 {
-    "id": 5
+  "id": 5
 }
 ```
-
