@@ -15,9 +15,9 @@ async function actualizarController(req, res) {
 
     if (nombre !== undefined) {
       if (typeof nombre !== "string" || nombre.trim() === "") {
-        return res.status(400).json({
-          message: "El nombre debe ser texto y no estar vacío",
-        });
+        return res
+          .status(400)
+          .json({ message: "El nombre debe ser texto y no estar vacío" });
       }
       datosActualizar.nombre = nombre.trim();
     }
@@ -25,9 +25,9 @@ async function actualizarController(req, res) {
     if (cantidad !== undefined) {
       const cantidadNum = Number(cantidad);
       if (!Number.isInteger(cantidadNum) || cantidadNum < 0) {
-        return res.status(400).json({
-          message: "La cantidad debe ser un entero mayor o igual a 0",
-        });
+        return res
+        .status(400)
+        .json({ message: "La cantidad debe ser un entero mayor o igual a 0", });
       }
       datosActualizar.cantidad = cantidadNum;
     }
@@ -35,17 +35,17 @@ async function actualizarController(req, res) {
     if (precio !== undefined) {
       const precioNum = Number(precio);
       if (isNaN(precioNum) || precioNum < 0) {
-        return res.status(400).json({
-          message: "El precio debe ser un número mayor o igual a 0",
-        });
+        return res
+        .status(400)
+        .json({ message: "El precio debe ser un número mayor o igual a 0", });
       }
       datosActualizar.precio = precioNum;
     }
 
     if (Object.keys(datosActualizar).length === 0) {
-      return res.status(400).json({
-        message: "Debes enviar al menos un campo para actualizar",
-      });
+      return res
+        .status(400)
+        .json({ message: "Debes enviar al menos un campo para actualizar", });
     }
 
     const datos = await actualizarModel(idNum, datosActualizar);
